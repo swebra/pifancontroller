@@ -11,7 +11,7 @@
 # - Rewrote using 'gpiozero' library
 # - Removed unnecessary dependencies
 # - Renamed function and variable names
-# - Introduced 'mintemp' and 'maxtemp' logic
+# - Introduced 'minTemp' and 'maxTemp' logic
 # - Added 'frequency' variable
 # - Improved comments
 
@@ -36,18 +36,18 @@ frequency = 10
 # off will be while operating in this region.
 
 # The max CPU temperature in Celsius before the fan is turned on
-maxtemp = 60
+maxTemp = 60
 # The min CPU temperature in Celsius before the fan is turned off
-# Must be a smaller value than 'maxtemp'
-mintemp = 50
+# Must be a smaller value than 'maxTemp'
+minTemp = 50
 
 
 # TEMPERATURE READ FUNCTION #
-def currenttemp():
+def currentTemp():
     # Save the command output of 'vcgencmd measure_temp'
-    commandoutput = popen("vcgencmd measure_temp").readline()
+    commandOutput = popen("vcgencmd measure_temp").readline()
     # Cleanup output and convert it to a float point number
-    CPUtemp = float(commandoutput.replace("temp=", "").replace("'C\n", ""))
+    CPUtemp = float(commandOutput.replace("temp=", "").replace("'C\n", ""))
     # Uncomment the line below for testing
     # print("Current temperature is {0}".format(CPUtemp))
     return CPUtemp
@@ -57,10 +57,10 @@ def currenttemp():
 try:
     fan = OutputDevice(pin)
     while True:
-        if currenttemp() > maxtemp:
+        if currentTemp() > maxTemp:
             fan.on()
-        elif currenttemp() < mintemp:
+        elif currentTemp() < minTemp:
             fan.off()
         sleep(frequency)
 except KeyboardInterrupt:
-    print("\nfancontrol.py quit")
+    print("\npifancontroller.py quit")
