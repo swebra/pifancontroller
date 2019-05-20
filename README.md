@@ -5,5 +5,16 @@ Loosely based on the work done by Edoardo Paolo Scalafiotti found [here](https:/
 
 See [imswebra.com](https://www.imswebra.com/projects/pifancontroller/) for more information on how I personally use this script.
 
+## Defaults
+- Fan turns on when the CPU temperature reaches 60°C
+- Fan turns off when the CPU temperature returns to 50°C.
+- The temperature is checked every 10 seconds.
+- The base pin of the transistor used to control the fan should be connected to [BCM pin 14](https://pinout.xyz/pinout/pin8_gpio14).
+
+See the script's inline comments for more information on the user variables.
+
+## Installation
+Download or clone the script and add `python3 /path/to/pifancontroller.py &` to your [`rc.local`](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md) file to have the script run on boot.
+
 ## License
 This work is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
