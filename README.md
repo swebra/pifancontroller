@@ -14,6 +14,8 @@ See [imswebra.com](https://www.imswebra.com/projects/pifancontroller/) for more 
 See the script's inline comments for more information on the user variables.
 
 ## Installation
+If installing on Raspberry Pi OS Lite (previously Raspbian Lite), `gpiozero` may need to [be installed](https://gpiozero.readthedocs.io/en/stable/installing.html).
+
 Download or clone the script and add `python3 /path/to/pifancontroller.py &` to your [`rc.local`](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md) file to have the script run on boot.
 
 ## License
